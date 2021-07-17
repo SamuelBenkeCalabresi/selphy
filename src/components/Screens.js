@@ -91,19 +91,19 @@ export default () => {
   return (
     <>
       <Header>
-        <Title>Quick Notes</Title>
+        <Title>Selphies</Title>
         <SignOutButton
           onClick={() => {
             Auth.signOut().then(() => window.location.reload());
           }}
         >
-          Sign Out
+          Sign Out (cya soon)
         </SignOutButton>
       </Header>
-      <StyledTabs index={tabIndex} onChange={index => setTabIndex(index)}>
+      <StyledTabs index={tabIndex} onChange={(index) => setTabIndex(index)}>
         <StyledTabList>
-          <StyledTab>Notes</StyledTab>
-          <StyledTab>Record</StyledTab>
+          <StyledTab>Stories</StyledTab>
+          <StyledTab>Record story</StyledTab>
         </StyledTabList>
         <StyledTabPanels>
           <StyledTabPanel>
