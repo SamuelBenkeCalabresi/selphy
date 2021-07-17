@@ -22,15 +22,15 @@ const Header = styled("div")`
 `;
 
 const Title = styled("h1")`
+  font-family: "Quicksand", sans-serif;
   margin-top: 0;
   margin-bottom: 0;
-  text-transform: uppercase;
-  color: #74b49b;
+  color: #ff495c;
   font-size: 24px;
 `;
 
 const SignOutButton = styled(Button)`
-  background-color: #74b49b;
+  background-color: #ff495c;
   cursor: pointer;
 `;
 
@@ -50,11 +50,12 @@ const StyledTabList = styled(TabList)`
   left: 0;
   right: 0;
   height: 40px;
-  box-shadow: 0 6px 6px rgba(116, 180, 155, 0.4);
+  box-shadow: 0 6px 6px #f76574;
 
   & > [data-selected] {
-    border-bottom-color: #74b49b;
-    color: #74b49b;
+    border-bottom-color: #ff495c;
+    font-weight: 700;
+    color: #ff495c;
   }
 `;
 
@@ -78,26 +79,26 @@ const StyledTab = styled(Tab)`
   text-transform: uppercase;
   flex: 1;
   padding: 16px;
-  color: #74b49b;
+  color: #ff495c;
   background-color: #ffffff;
   font-size: 16px;
   border: none;
   border-bottom: 3px solid #ffffff;
 `;
 
-export default () => {
+export default function Screens() {
   const [tabIndex, setTabIndex] = useState(0);
 
   return (
     <>
       <Header>
-        <Title>Selphies</Title>
+        <Title>selphy</Title>
         <SignOutButton
           onClick={() => {
             Auth.signOut().then(() => window.location.reload());
           }}
         >
-          Sign Out (cya soon)
+          Sign Out
         </SignOutButton>
       </Header>
       <StyledTabs index={tabIndex} onChange={(index) => setTabIndex(index)}>
@@ -116,4 +117,4 @@ export default () => {
       </StyledTabs>
     </>
   );
-};
+}

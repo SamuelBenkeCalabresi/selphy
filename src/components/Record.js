@@ -33,7 +33,7 @@ const pulse = keyframes`
   }
 `;
 
-export default (props) => {
+export default function Record(props) {
   const [isRecording, setIsRecording] = useState(false);
   const [showRecordingEditor, setShowRecordingEditor] = useState(false);
   const [recordingText, setRecordingText] = useState("");
@@ -160,19 +160,19 @@ export default (props) => {
             <FaMicrophoneAltSlash
               size={50}
               style={{ margin: "auto" }}
-              color="#f4f9f4"
+              color="#ff495c"
             />
           ) : isRecording ? (
             <FaMicrophone
               size={50}
               style={{ margin: "auto" }}
-              color="#f4f9f4"
+              color="#ff495c"
             />
           ) : (
             <FaMicrophoneAlt
               size={50}
               style={{ margin: "auto" }}
-              color="#f4f9f4"
+              color="#ff495c"
             />
           )}
         </div>
@@ -191,4 +191,4 @@ export default (props) => {
       )}
     </Container>
   );
-};
+}

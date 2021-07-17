@@ -2,14 +2,27 @@ import React, { useEffect, useState } from "react";
 import { Auth } from "aws-amplify";
 import { Authenticator } from "aws-amplify-react";
 import styled from "@emotion/styled";
+import logoPath from "./assets/logo.svg";
 
 import awsExports from "./aws-exports";
 import Screens from "./components/Screens";
+import nodeNotifier from "node-notifier";
 
 const Title = styled("h1")`
-  text-align: center;
-  text-transform: uppercase;
-  color: #a7d7c5;
+  font-family: "Quicksand", sans-serif;
+  font-size: 2.2em;
+  color: var(--sizzling-red);
+`;
+
+const Logo = styled("img")`
+  height: 40px;
+  margin-right: 10px;
+`;
+
+const Header = styled("header")`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 8px;
 `;
 
@@ -23,27 +36,33 @@ const theme = {
     borderRadius: "4px",
   },
   sectionHeader: {
-    color: "#74b49b",
+    color: "#000",
   },
   sectionFooterSecondaryContent: {
     color: "#303952",
   },
   inputLabel: {
-    color: "#74b49b",
+    color: "#000",
   },
   input: {
-    backgroundColor: "#f4f9f4",
-    color: "#74b49b",
+    backgroundColor: "#ffebed",
+    border: 0,
+    color: "#000",
   },
   hint: {
-    color: "#74b49b",
+    color: "#000",
   },
   button: {
     borderRadius: "3px",
-    backgroundColor: "#a7d7c5",
+    backgroundColor: "#FF495C",
   },
   a: {
-    color: "#a7d7c5",
+    color: "#FF495C",
+  },
+  toast: {
+    top: "auto",
+    bottom: "0",
+    backgroundColor: "#FF495C",
   },
 };
 
@@ -67,7 +86,10 @@ function App() {
     <Screens />
   ) : (
     <>
-      <Title>Selphy</Title>
+      <Header>
+        <Logo src={logoPath} />
+        <Title>selphy</Title>
+      </Header>
       <Authenticator
         onStateChange={(authState) => {
           if (authState === "signedIn") {

@@ -7,24 +7,26 @@ import { Formik } from "formik";
 import Dialog from "./Dialog";
 
 const StyledButton = styled(Button)`
-  background-color: #74b49b;
+  background-color: #ff495c;
   cursor: pointer;
 `;
 
 const StyledLabel = styled(Label)`
-  color: #74b49b;
+  color: #ff495c;
   margin-bottom: 4px;
 `;
 
 const StyledInput = styled(Input)`
-  color: #74b49b;
+  color: #000;
+  border: 0;
   border-radius: 3px;
-  background-color: #f4f9f4;
+  background-color: #ffebed;
 `;
 
 const StyledTextarea = styled("textarea")`
-  color: #74b49b;
-  background-color: #f4f9f4;
+  color: #000;
+  background-color: #ffebed;
+  border: 0;
   width: 100%;
   min-height: 80px;
   border-radius: 3px;
@@ -57,21 +59,21 @@ const InputContainer = styled("div")`
 `;
 
 const Title = styled("h2")`
-  color: #74b49b;
+  color: #ff495c;
 `;
 
-export default props => (
+export default (props) => (
   <Dialog onDismiss={props.onDismiss}>
     <Title>{props.title ? "Edit Note" : "Create Note"}</Title>
     <Formik
       initialValues={{
         title: props.title || "",
-        text: props.text
+        text: props.text,
       }}
       onSubmit={(values, { setSubmitting, resetForm }) => {
         props.onSave({
           title: values.title || `${values.text.substr(0, 20)}...`,
-          text: values.text
+          text: values.text,
         });
         setSubmitting(false);
         resetForm();

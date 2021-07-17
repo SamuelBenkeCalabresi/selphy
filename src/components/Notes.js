@@ -12,7 +12,7 @@ const Container = styled("div")`
   width: 100%;
 `;
 
-export default () => {
+export default function Notes() {
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
@@ -32,22 +32,22 @@ export default () => {
 
   return (
     <Container>
-      {notes.map(note => (
+      {notes.map((note) => (
         <Note
           key={note.id}
           {...note}
-          onSaveChanges={async values => {
+          onSaveChanges={async (values) => {
             const result = await API.graphql(
               graphqlOperation(updateNote, {
                 input: {
                   ...note,
-                  ...values
-                }
+                  ...values,
+                },
               })
             );
 
             setNotes(
-              notes.map(n => {
+              notes.map((n) => {
                 return n.id === note.id ? result.data.updateNote : n;
               })
             );
@@ -56,15 +56,15 @@ export default () => {
             const result = await API.graphql(
               graphqlOperation(deleteNote, {
                 input: {
-                  id: note.id
-                }
+                  id: note.id,
+                },
               })
             );
 
-            setNotes(notes.filter(n => n.id !== note.id));
+            setNotes(notes.filter((n) => n.id !== note.id));
           }}
         />
       ))}
     </Container>
   );
-};
+}
